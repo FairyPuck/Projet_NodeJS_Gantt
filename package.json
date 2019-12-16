@@ -1,0 +1,27 @@
+{
+  "name": "nodejs_gantt",
+  "version": "1.0.0",
+  "description": "Site web affichant un diagramme de Gantt",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FairyPuck/Projet_NodeJS_Gantt.git"
+  },
+  "keywords": [
+    "mongoose"
+  ],
+  "author": "Julian Hamboyan, Chancel Simo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FairyPuck/Projet_NodeJS_Gantt/issues"
+  },
+  "homepage": "https://github.com/FairyPuck/Projet_NodeJS_Gantt#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.1"
+  }
+}

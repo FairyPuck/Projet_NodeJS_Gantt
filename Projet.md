@@ -1,5 +1,7 @@
 # Projet Gantt
 
+**npm i mongoose**
+
 ## FrontEnd
 Création du diagramme de Gantt:
 Personne
