@@ -2,21 +2,10 @@
 
 // Base require
 const mongoose = require('mongoose');
+
 const moment = require('moment');
 
-//const Schema = mongoose.Schema;
 const Service = mongoose.Schema;
-
-/*const mainSchema = new Schema({
-    name: { type: String, required: true, unique: true, trim: true},
-    created_at: { type: Date, default: Date.now()},
-    updated_at: { type: Date, required: true},
-    comments: [{
-        name: { type: String, required: true, trim: true},
-        date: {type: Date, default: Date.now()},
-        comment: String
-    }]
-});*/
 
 const mainSchema = new Service({
     nameService : String,
@@ -34,4 +23,4 @@ const mainSchema = new Service({
         }]
     });
 
-module.export = mongoose.model('schema', mainSchema);
+module.exports = mongoose.model('schema', mainSchema);
