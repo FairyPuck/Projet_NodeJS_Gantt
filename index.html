@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>Tp Diagramme GANTT - NodeJs</title>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js">
+        </script>
+        <script type="text/javascript" src="Bootstrap/js/bootstrap.js">
+        </script>
+        <link rel="stylesheet" href="Bootstrap/css/bootstrap.css">
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">TP NodeJS : Diagramme de GANTT</span>
+        </nav>  
+        
+        <table class="container table table-bordered text-center" style="margin-top:50px;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Tâche / Période</th>
+                <th scope="col">Janvier</th>
+                <th scope="col">Février</th>
+                <th scope="col">Mars</th>
+                <th scope="col">Avril</th>
+                <th scope="col">Mai</th>
+                <th scope="col">Juin</th>
+                <th scope="col">Juillet</th>
+                <th scope="col">Aôut</th>
+                <th scope="col">Septembre</th>
+                <th scope="col">Octobre</th>
+                <th scope="col">Novembre</th>
+                <th scope="col">Décembre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"> - </th>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>
+                <td> - </td>    
+              </tr>
+            </tbody>
+          </table>
+          <div class="container" align="right">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                Ajouter une tâche +
+            </button>
+          </div>
+
+
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+          
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  
+                  <h4 class="modal-title">Ajout d'une tâche</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Nom de la tâche :</label>
+                          <input type="text" class="form-control" id="tache" name="tache">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputState">Période :</label>
+                            <select id="inputState" name="per" class="form-control">
+                              <option selected value="jan">Janvier</option>
+                              <option value="fev">Février</option>
+                              <option value="mar">Mars</option>
+                              <option value="avr">Avril</option>
+                              <option value="mai">Mai</option>
+                              <option value="juin">Juin</option>
+                              <option value="jui">Juillet</option>
+                              <option value="ao">Aôut</option>
+                              <option value="sept">Septembre</option>
+                              <option value="oct">Octobre</option>
+                              <option value="nov">Novembre</option>
+                              <option value="dec">Décembre</option>
+                            </select>
+                          </div>
+                        <button type="submit" class="btn btn-secondary">Ajouter</button>
+                      </form>
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+              </div>
+          
+            </div>
+          </div>
+
+          <hr>
+    </body>
+</html>
