@@ -3,9 +3,9 @@
 // Base require
 const mongoose = require('mongoose');
 
-const Shema = mongosse.Shema;
+const Schema = mongoose.Schema;
 
-const mainShema = new Shema({
+const mainSchema = new Schema({
     name: { type: String, required: true, unique: true, trim: true},
     created_at: { type: Date, default: Date.now()},
     updated_at: { type: Date, required: true},
