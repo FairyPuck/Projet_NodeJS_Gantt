@@ -2,10 +2,43 @@
     <head>
         <title>Tp Diagramme GANTT - NodeJs</title>
         
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js">
+        <script type="text/javascript" src="Bootstrap/js/jquery.js">
         </script>
         <script type="text/javascript" src="Bootstrap/js/bootstrap.js">
         </script>
+        <script type="text/javascript">
+        
+        $(document).ready(function(){
+              var task = [];
+
+              function timestampToDate(ts){
+                var theDate = new Date(ts * 1000);
+                return theDate.toLocaleTimeString();
+
+              }
+
+              $.getJSON('test.json',function(data){
+                $.each(data.element,function(i,f){
+                 var ligne = "<tr>" 
+                           + "<td>" + timestampToDate(f.start) + " : " + timestampToDate(f.end) + "</td>"
+                   s        + "<td>" + (f.per == 'Lundi'?f.name +"<br/>" +f.desc+ "<br/>"+ f.percentageProgress+"%" : "-")+ "</td>"
+                           + "<td>" + (f.per == 'Mardi'?f.name +"<br/>" +f.desc+ "<br/>"+ f.percentageProgress+"%" :"-")+ "</td>"
+                           + "<td>" + (f.per == 'Mercredi'?f.name +"<br/>"+f.desc+ "<br/>"+ f.percentageProgress+"%" :"-")+ "</td>"
+                           + "<td>" + (f.per == 'Jeudi'?f.name +"<br/>"+f.desc+ "<br/>"+ f.percentageProgress+"%" :"-")+ "</td>"
+                           + "<td>" + (f.per == 'Vendredi'?f.name +"<br/>"+f.desc+ "<br/>"+ f.percentageProgress+"%" :"-")+ "</td>"
+                           + "<td>" + (f.per == 'Samedi'?f.name +"<br/>"+f.desc+ "<br/>"+ f.percentageProgress+"%" :"-")+ "</td>"
+                           + "<td>" + (f.per == 'Dimanche'?f.name +"<br/>"+f.desc+ "<br/>"+ f.percentageProgress+"%" :"-")+ "</td>"
+                           + "</tr>"
+                  $(ligne).appendTo("#tdata tbody");
+                        });
+              });
+
+        });
+        
+        </script>
+
+
+
         <link rel="stylesheet" href="Bootstrap/css/bootstrap.css">
         
     </head>
@@ -14,7 +47,7 @@
             <span class="navbar-brand mb-0 h1">TP NodeJS : Diagramme de GANTT</span>
         </nav>  
         
-        <table class="container table table-bordered text-center" style="margin-top:50px;">
+        <table class="container table table-bordered text-center" id="tdata" style="margin-top:50px;">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Horaires / Période</th>
@@ -26,18 +59,10 @@
                 <th scope="col">Samedi</th>
                 <th scope="col">Dimanche</th>
               </tr>
+             
             </thead>
             <tbody>
-              <tr>
-                <th scope="row"> - </th>
-                <td> - </td>
-                <td> - </td>
-                <td> - </td>
-                <td> - </td>
-                <td> - </td>
-                <td> - </td>
-                <td> - </td>   
-              </tr>
+              
             </tbody>
           </table>
           <div class="container" align="right">
@@ -57,29 +82,52 @@
                   <h4 class="modal-title">Ajout d'une tâche</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="POST" action="#">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nom de la tâche :</label>
+                          <label for="tache">Nom de la tâche :</label>
                           <input type="text" class="form-control" id="tache" name="tache">
+                        </div>
+                        <div class="form-group">
+                          <label for="desc">Description :</label>
+                          <input type="text" class="form-control" id="desc" name="desc">
                         </div>
 
                         <div class="form-group">
                             <label for="inputState">Période :</label>
                             <select id="inputState" name="per" class="form-control">
-                              <option selected value="jan">Janvier</option>
-                              <option value="fev">Février</option>
-                              <option value="mar">Mars</option>
-                              <option value="avr">Avril</option>
-                              <option value="mai">Mai</option>
-                              <option value="juin">Juin</option>
-                              <option value="jui">Juillet</option>
-                              <option value="ao">Aôut</option>
-                              <option value="sept">Septembre</option>
-                              <option value="oct">Octobre</option>
-                              <option value="nov">Novembre</option>
-                              <option value="dec">Décembre</option>
+                              <option selected value="jan">Lundi</option>
+                              <option value="fev">Mardi</option>
+                              <option value="mar">Mercredi</option>
+                              <option value="avr">Jeudi</option>
+                              <option value="mai">Vendredi</option>
+                              <option value="juin">Samedi</option>
+                              <option value="jui">Dimanche</option>
+                             
                             </select>
                           </div>
+                          <div class="form-row">
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Heure de debut">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Heure de fin">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <label for="customRange1">Pourcentage de progrès :</label>
+                            <input type="range" class="custom-range range" id="customRange1">
+                            <output></output>
+                          </div>
+                          <div class="form-row">
+                            <label for="example-color-input" class="col-2 col-form-label">Couleur :</label>
+                          
+                              <input class="form-control" type="color" value="#563d7c" id="example-color-input">
+                          
+                          </div>
+
+                          <hr>
+
+
                         <button type="submit" class="btn btn-secondary">Ajouter</button>
                       </form>
 
@@ -94,5 +142,14 @@
           </div>
 
           <hr>
+          <script type="text/javascript">
+            $(function() {
+              $('.range').next().text('--'); // Valeur par défaut
+              $('.range').on('input', function() {
+                var $set = $(this).val();
+                $(this).next().text($set+'%');
+              });
+            });
+          </script>
     </body>
 </html>

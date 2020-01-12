@@ -1,0 +1,31 @@
+{
+    "element":[
+        {
+            "name": "Revision",
+            "desc": "Mon projet de revision",
+            "per": "Mardi",
+            "start": 1491680626329,
+            "end": 1491684607029,
+            "percentageProgress": 45,
+            "color": "#fc0202"
+        },
+        {
+            "name": "Test",
+            "desc": "Mon projet de test",
+            "per": "Jeudi",
+            "start": 1491900626329,
+            "end": 1991684607029,
+            "percentageProgress": 75,
+            "color": "#fc0202"  
+        },
+        {
+            "name": "Test",
+            "desc": "Mon projet de test",
+            "per": "Samedi",
+            "start": 1491900626329,
+            "end": 1991684607029,
+            "percentageProgress": 20,
+            "color": "#fc0202"  
+        }
+    ]
+}
