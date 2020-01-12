@@ -9,18 +9,8 @@ const moment = require('moment');
 
 const mainShema = require(join(__dirname,'..','model', 'mainSchema'));
 
-
 router.get('/', (req, res) => {
-    mainShema.find(null, (err, docs) => {
-        if (err) {
-            console.error(err);
-        }
-        else {
-            console.log('Docs: ' + docs);
-        }
-
-        res.json({ message: 'Hello World'});
-    });
+ res.json("Mon Diagramme");
 });
 
 router.get('/add', (req, res) => {
@@ -55,6 +45,4 @@ router.get('/add', (req, res) => {
     res.end();
 });
 
-module.export = {
-    router
-}
+module.exports = router;

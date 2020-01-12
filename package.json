@@ -21,6 +21,7 @@
   "homepage": "https://github.com/FairyPuck/Projet_NodeJS_Gantt#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
     "moment": "^2.24.0",
     "mongoose": "^5.8.1",
     "socket.io": "^2.3.0"
