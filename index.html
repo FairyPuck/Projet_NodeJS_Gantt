@@ -21,7 +21,7 @@
                 $.each(data.element,function(i,f){
                  var ligne = "<tr>" 
                            + "<td>" + timestampToDate(f.start) + " : " + timestampToDate(f.end) + "</td>"
-                   s        + "<td>" + (f.per == 'Lundi'?f.name +"<br/>" +f.desc+ "<br/>"+ f.percentageProgress+"%" : "-")+ "</td>"
+                           + "<td>" + (f.per == 'Lundi'?f.name +"<br/>" +f.desc+ "<br/>"+ f.percentageProgress+"%" : "-")+ "</td>"
                            + "<td>" + (f.per == 'Mardi'?f.name +"<br/>" +f.desc+ "<br/>"+ f.percentageProgress+"%" :"-")+ "</td>"
                            + "<td>" + (f.per == 'Mercredi'?f.name +"<br/>"+f.desc+ "<br/>"+ f.percentageProgress+"%" :"-")+ "</td>"
                            + "<td>" + (f.per == 'Jeudi'?f.name +"<br/>"+f.desc+ "<br/>"+ f.percentageProgress+"%" :"-")+ "</td>"
