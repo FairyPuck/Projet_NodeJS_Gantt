@@ -8,19 +8,28 @@ const moment = require('moment');
 const Service = mongoose.Schema;
 
 const mainSchema = new Service({
-    nameService : String,
-    projects :
-        [
-            {
-                name : String,
-                desc : String,
-                daysOff : { Mo : Boolean, Tu : Boolean,  We : Boolean, Th : Boolean, Fr : Boolean, Sa : Boolean, Su : Boolean },
-                workingHours : { start : Number, end : Number },
-                task : [{ id : Number, name : String, desc : String, start : Number, end : Number, percentageProgress : Number, color : String, linkedTask : Array, ressources : Array }],
-                groupTask : [{ name : String, start : Number, end : Number }],
-                resources : [{ name : String, cost : Number, type : String }],
-                milestones : [{ name : String, date : Number }]
-        }]
-    });
+    nameService: String,
+    nameProject: String,
+    descProject: String,
+    daysOffProject: { Mo: Boolean, Tu: Boolean, We: Boolean, Th: Boolean, Fr: Boolean, Sa: Boolean, Su: Boolean },
+    workingHoursProject: { start: Number, end: Number },
+    idTask: Number,
+    nameTask: String,
+    descTask : String,
+    startTask : Number,
+    endTask : Number,
+    percentageProgressTask : Number,
+    colorTask : String,
+    linkedTaskTask : Array,
+    ressourcesTask: String,
+    nameGroupTask: String,
+    startGroupTask: Number,
+    endGroupTask : Number,
+    nameResources: String,
+    costRessources: Number,
+    typeRessources: String,
+    nameMilestones: String,
+    dateMilestones: Number
+});
 
-module.exports = mongoose.model('schema', mainSchema);
+module.exports = mongoose.model('Schema', mainSchema);

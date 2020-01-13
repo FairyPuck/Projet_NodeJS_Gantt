@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<h3>{{viewTitle}}</h3>
+
+<a class="btn btn-primary" href="/">Return to the Project</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Service Name</th>
+            <th>Project Name</th>
+            <th>Desc</th>
+            <th>Task ID</th>
+            <th>Task Name</th>
+            <th>Task Desc</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Pourcent</th>
+            <th>Color</th>
+            <th>Ressource Name</th>
+            <th>Ressource Cost</th>
+            <th>Ressource Type</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this._id}}</td>
+            <td>{{this.nameService}}</td>
+            <td>{{this.nameProject}}</td>
+            <td>{{this.descProject}}</td>
+            <td>{{this.idTask}}</td>
+            <td>{{this.nameTask}}</td>
+            <td>{{this.descTask}}</td>
+            <td><script>return new Date({{this.startTask}}).getDate()</script></td>
+            <td>{{this.taskEnd}}</td>
+            <td>{{this.percentageProgressTask}}</td>
+            <td>{{this.colorTask}}</td>
+            <td>{{this.nameResources}}</td>
+            <td>{{this.costRessources}}</td>
+            <td>{{this.typeRessources}}</td>
+            <td>
+                <a href="/schemas/{{this._id}}" aria-hidden="true"></a>
+                <!--<a href="/task/{{this._id}}">Update</a> -->
+                <a href="/myTask/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ? ');">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

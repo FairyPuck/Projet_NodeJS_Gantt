@@ -11,21 +11,28 @@ const io = require('socket.io')(http);
 const { join } = require('path');
 
 // Controller requires
-const taskController = require('./controller/taskController');
 const mainController = require('./controller/mainController');
+const myTaskController = require('./controller/myTaskController')
 
-// Création du serveur
+const path = require('path');
+const exphbs = require ('express-handlebars');
+const bodyparser = require('body-parser');
+
+//--------------------------------Views--------------------------------------------
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({
+    extended: true
+}));
+app.set('views', path.join(__dirname,'/views/'));
+app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/'}));
+app.set('view engine', 'hbs');
+
+//--------------------------------------Création du serveur--------------------------------------------------
 app.listen(port, ()=> {
     console.log("Serveur OK !")
 })
-app.use('/task', taskController);
-app.use('/Gantt', mainController);
-app.use('/Gantt/add', mainController);
-
-//--------------------------------Views--------------------------------------------
-const path = require('path');
-const exphbs = require ('express-handlebars');
-
+app.use('/addTask', mainController);
+app.use('/myTask', myTaskController);
 
 //------------------------------------------------DataBase----------------------------------
 // Base requires

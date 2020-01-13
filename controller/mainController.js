@@ -9,40 +9,71 @@ const moment = require('moment');
 
 const mainShema = require(join(__dirname,'..','model', 'mainSchema'));
 
+const mongoose = require('mongoose');
+const Schema = mongoose.model('Schema');
+
 router.get('/', (req, res) => {
- res.json("Mon Diagramme");
+ res.render("Gantt/addTask", {
+        viewTitle : "Nouvelle Tâche"
+    });
 });
 
-router.get('/add', (req, res) => {
-    let newArticle = new mainShema({
-        nameService: "Hamboyan_Chancel",
-        projects: [
-            {
-                name: "projet de test",
-                desc: "Description du projet, blablabla...",
-                daysOff: {Mo: true, Tu: true, We: true, Th: true, Fr: true, Sa: false, Su: false},
-                workingHours: {start: moment().hour(), end: moment().hour()},
-                task: [{
-                    id: 0,
-                    name: "tache 1",
-                    desc: "toto",
-                    start: 1491680626329,
-                    end: 1491684607029,
-                    percentageProgress: 50,
-                    color: "#fc0202",
-                    linkedTask: [],
-                    ressources: []
-                }],
-                groupTask: [{name: "optional", start: Date.now(), end: Date.now()}],
-                resources: [{name: "Jérémy", cost: 500, type: "humain"}],
-                milestones: [{name: "jalon °1", date: Date.now()}]
-            }
-        ]
+router.post('/', (req, res) => {
+    console.log("body: ",req.body);
+    saveTask(req, res);
+});
+
+function saveTask(req, res){
+    let schema = new Schema();
+    schema.nameService = req.body.nameService;
+    schema.nameProject = req.body.name;
+    schema.descProject = req.body.desc;
+    schema.daysOffProject = [req.body.Mo, req.body.Tu, req.body.We, req.body.Th, req.body.Fr, req.body.Sa, req.body.Su];
+    //workingHoursProject = [req.body.taskStart, req.body.taskEnd];
+    schema.idTask = req.body.taskID;
+    schema.nameTask = req.body.taskName;
+    schema.descTask = req.body.taskDesc;
+    schema.startTask = (new Date(req.body.taskStart).getTime()/1000);
+    schema.endTask = (new Date(req.body.taskEnd).getTime()/1000);
+    schema.percentageProgressTask = req.body.percentageProgress;
+    schema.colorTask = req.body.Color;
+    schema.nameResources = req.body.ressourcesName;
+    schema.costRessources = req.body.ressourcesCost;
+    schema.typeRessources = req.body.ressourcesType;
+
+    schema.save((err, doc) => {
+        if (!err) res.redirect('/');
+        else console.log("erreur lors de la sauvegarde : " + err);
     });
 
-    newArticle.save(err => console.error(err));
+}
 
-    res.end();
+router.get('/myTask', (req, res) => {
+    Schema.find((err, docs) => {
+        if (!err) {
+            console.log(docs);
+            docs.forEach(element => {
+                console.log(element.name);
+            });
+            // res.json(docs);
+            res.render("Gantt/myTask", {
+                list: docs
+            });
+        } else {
+            console.log('Error in retrieving task list : ' + err);
+        }
+    });
+});
+
+//Route Delete GroupTask by ID
+router.delete('/myTask/delete/:id', (req, res) => {
+    Schema.findByIdAndDelete(req.params.id, (err, doc) => {
+        if (!err) {
+            res.redirect('/addTask/myTask');
+        } else {
+            console.log('Error in task delete : ' + err);
+        }
+    });
 });
 
 module.exports = router;

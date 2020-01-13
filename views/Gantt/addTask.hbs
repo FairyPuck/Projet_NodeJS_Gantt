@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<h3>{{viewTitle}}</h3>
+
+<form action="/addTask" method="POST">
+    <input type="hidden" name="_id">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            <label>Service Name</label>
+            <input type="text" class="form-control" name="nameService" placeholder="Service Name">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Project Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Project Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="form-control" name="desc" placeholder="Description" >
+    </div>
+
+    <div class="form-group col-md-6">
+<label class="container">Monday
+  <input type="checkbox" name="Mo">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container">Tuesday
+  <input type="checkbox" name="Tu">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container">Wednesday 
+  <input type="checkbox" name="We">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container">Thursday 
+  <input type="checkbox" name="Th">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container">Friday  
+  <input type="checkbox" name="Fr">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container">Saturday  
+  <input type="checkbox" name="Sa">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container">Sunday 
+  <input type="checkbox" name="Su">
+  <span class="checkmark"></span>
+</label>
+    </div>
+        <div class="form-group">
+            <label>Task ID </label>
+            <input type="number" class="form-control" name="taskID">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Task Name</label>
+            <input type="text" class="form-control" name="taskName" placeholder="Project Name">
+        </div>
+    <div class="form-group">
+        <label>Task Description</label>
+        <input type="text" class="form-control" name="taskDesc" placeholder="Description" >
+    </div>
+    <div class="form-group">
+        <label>Task Start </label>
+        <input type="date" class="form-control" name="taskStart" placeholder="Time start" >
+    </div>
+    <div class="form-group">
+            <label>Task End </label>
+            <input type="date" class="form-control" name="taskEnd" placeholder="Time end" >
+        </div>
+        <div class="form-group">
+            <label>Task Progress </label>
+            <input type="number" class="form-control" name="percentageProgress" placeholder="0%">
+        </div>
+        <div class="form-group">
+            <label>Color</label>
+            <input type="text" class="form-control" name="Color" placeholder="#ffff">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Ressources Name</label>
+            <input type="text" class="form-control" name="ressourcesName" placeholder="Ressources Name">
+        </div>
+        <div class="form-group">
+            <label>Ressources Cost </label>
+            <input type="number" class="form-control" name="ressourcesCost" placeholder="0$">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Ressources Type</label>
+            <input type="text" class="form-control" name="ressourcesType" placeholder="Human">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">Envoyer</button>
+            <a class="btn btn-secondary" href="/myTask">View All</a>
+            <a class="btn btn-primary" href="/myTask">Return to the Project</a>
+        </div>
+        </div>
+</form>
+
