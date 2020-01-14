@@ -7,4 +7,4 @@
 ## III] Lancer le serveur avcec "npm start" 
 
 ## IV] Se connecter au serveur en utilisant le 'localhost:5000/addTask'
-# Une fois le formulaire rempli, la liste répertoriant les tâches se trouve dans l'URL 'localhost:5000/addTask/myTask'
+### Une fois le formulaire rempli, la liste répertoriant les tâches se trouve dans l'URL 'localhost:5000/addTask/myTask'
